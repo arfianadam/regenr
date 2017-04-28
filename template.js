@@ -1,61 +1,61 @@
 var template = (() => {
-	var options = {
-		css: 'scss',
-		privateRep: true,
-		cssModules: false
-	}
+  var options = {
+    css: 'scss',
+    privateRep: true,
+    cssModules: false
+  }
 
-	var getJson = (componentName, privateRep) => {
-		privateRep = privateRep || options.privateRep
-		
-		return `{
-	"name": "${componentName}",
-	"version": "0.0.0",
-	"private": ${privateRep},
-	"main": "./${componentName}.js"
+  var getJson = (componentName, privateRep) => {
+    privateRep = privateRep || options.privateRep
+    
+    return `{
+  "name": "${componentName}",
+  "version": "0.0.0",
+  "private": ${privateRep},
+  "main": "./${componentName}.js"
 }`
-	}
+  }
 
-	var getReact = (componentName, style, cssModules) => {
-		cssModules = cssModules || options.cssModules
-		return `import React from 'react'
-${cssModules ? "import styles from './" + componentName + '.' + style + "'" : ''}
+  var getReact = (componentName, style, cssModules) => {
+    cssModules = cssModules || options.cssModules
+    return `import React, { Component } from 'react';
+${cssModules ? "import styles from './" + componentName + '.' + style + "';" : ''}
 
-class ${componentName} extends React.Component {
-	constructor(props) {
-		super(props)
-	}
+export default class ${componentName} extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-	render() {
-		return (
-			<div ${cssModules ? 'className={ ' + 'styles.' + componentName + ' }' : '' }>
-				{/* Your code here */}
-			</div>
-		)
-	}
+  render() {
+    return (
+      <div ${cssModules ? 'className={' + 'styles.' + componentName + '}' : '' }>
+        {/* Your code here */}
+      </div>
+    );
+  }
 }
+`
+  }
 
-export default ${componentName}`
-	}
+  var getStyle = (componentName,style) => {
+    style = style || 'scss'
 
-	var getStyle = (componentName,style) => {
-		style = style || 'scss'
-
-		if (style === 'sass') {
-			return `.${componentName}
-	/* Your stylesheet here */`
-		} else {
-			return `.${componentName} {
-	/* Your stylesheet here */
+    if (style === 'sass') {
+      return `.${componentName}
+  /* Your stylesheet here */`
+    } else {
+      return `.${componentName} {
+  /* Your stylesheet here */
 }`
-		}
-	}
+    }
+  }
 
-	return {
-		getStyle: getStyle,
-		getReact: getReact,
-		getJson: getJson
-	}
+  return {
+    getStyle: getStyle,
+    getReact: getReact,
+    getJson: getJson
+  }
 })()
 
 module.exports = template;
