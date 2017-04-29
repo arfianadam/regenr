@@ -1,58 +1,57 @@
 # Regenr
 React Generator
 
-##Summary
+## Summary
 Regenr is a command-line interface that helps Generating ReactJs Components.
 
-##Installation
+## Installation
 `npm install -g regenr`
 
-##Usage
+## Usage
 `regenr <path>/<componentName> [options]` 
 
 Example:
 `regenr src/Components/Header` will provides:
 
-*Header.js*
+#### Header.js
 ```javascript
-import React from 'react'
-import styles from './Header.scss'
+import React, { Component } from 'react';
+import styles from './Header.scss';
 
-class Header extends React.Component {
-	constructor(props) {
-		super(props)
-		this.displayName = 'Header'
-	}
-	render() {
-		return (
-			<div className={styles.Header}>
-				{/* Your code here */}
-			</div>
-		)
-	}
+export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div className={styles.Header}>
+        {/* Your code here */}
+      </div>
+    );
+  }
 }
-
-export default Header
 ```
 
-*Header.scss*
+#### Header.scss
 ```sass
 .Header{
-		/* Your stylesheet here */
+    /* Your stylesheet here */
 }
 ```
 
-*package.json*
+#### package.json
 ```json
 {
-		"name": "Header",
-		"version": "0.0.0",
-		"private": true,
-		"main": "./Header.js"
+    "name": "Header",
+    "version": "0.0.0",
+    "private": true,
+    "main": "./Header.js"
 }
 ```
 
-#Options
+## Options
 `-c [css preprocessor]` or `--css [css preprocessor]`
 
 Example:
@@ -60,8 +59,8 @@ Example:
 
 Will provide .less integration
 
-###Screenshot
+## Screenshot
 ![Screenshot](/ss1.png?raw=true "Screenshot")
 
-###License
+## License
 MIT
