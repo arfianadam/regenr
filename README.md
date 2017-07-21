@@ -2,15 +2,28 @@
 React Generator
 
 ## Summary
-Regenr is a command-line interface that helps Generating ReactJs Components.
+Regenr is a command-line interface that helps generating ReactJs components. The built in modular pattern uses webpack's `import` and `export` so make sure your project have the right module bundling configuration. Here are the ones I personally suggest using:
+- `babel-loader`
+- `sass-loader`, or `css-loader` if you create a component with `--css` option
+
+## Features
+- Easy to use
+- Fully checked and compatible with `eslint`
+- Thus, suitable for today's javascript best practices
+
+## Requirements
+- `nodejs`
+- `webpack` and the right configuration for the modular pattern
 
 ## Installation
-`npm install -g regenr`
+- Clone this repo
+- Inside the cloned repo, run `npm install -g`
+- Now the command `regenr` is available in your system!
 
 ## Usage
 `regenr <path>/<componentName> [options]` 
 
-Example:
+## Example:
 `regenr src/Components/Header` will provides:
 
 #### Header.js
