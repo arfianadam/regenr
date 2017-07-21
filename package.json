@@ -16,5 +16,9 @@
     "colors": "^1.1.2",
     "commander": "^2.9.0",
     "filendir": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.2.0",
+    "eslint-config-google": "^0.9.1"
   }
 }
