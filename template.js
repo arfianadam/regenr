@@ -1,16 +1,13 @@
 const template = (() => {
   const options = {
     css: "scss",
-    privateRep: true,
     cssModules: false
   };
 
-  const getJson = (componentName, privateRep = options.privateRep) => `{
-  "name": "${componentName}",
-  "version": "0.0.0",
-  "private": ${privateRep},
-  "main": "./${componentName}.js"
-}`;
+  const getIndex = (componentName) => `import ${componentName} from './${componentName}';
+
+export default ${componentName};
+`;
 
   const getReact = (componentName, style, cssModules = options.cssModules) => `import React, { Component } from 'react';
 ${cssModules ? "import styles from './" + componentName + "." + style + "';" : ""}
@@ -44,7 +41,7 @@ export default class ${componentName} extends Component {
   return {
     getStyle,
     getReact,
-    getJson
+    getIndex
   };
 })();
 

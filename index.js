@@ -4,7 +4,7 @@ var program = require("commander"),
   colors = require("colors"),
   templates = require("./template.js");
 
-var createFile = function(path,css) {
+var createFile = function(path, css) {
   css = css || "scss";
 
   var filename = path.match(/[^\\|/]*$/)[0];
@@ -12,23 +12,23 @@ var createFile = function(path,css) {
 
   console.log("\n=====================\n== React Generator ==\n=====================");
 
-  filendir.writeFile(dir + filename + "/" + filename + ".js", templates.getReact(filename, css, true) , function(err) {
+  filendir.writeFile(dir + filename + "/" + filename + ".js", templates.getReact(filename, css, true), function(err) {
     if (err) return console.log(err);
 
     console.log("Created " + `${dir}${filename}/` + colors.yellow.underline(`${filename}.js`));
     return true;
   });
 
-  filendir.writeFile(`${dir}${filename}/${filename}.${css}`, templates.getStyle(filename, css) , function(err) {
+  filendir.writeFile(`${dir}${filename}/${filename}.${css}`, templates.getStyle(filename, css), function(err) {
     if (err) return console.log(err);
     console.log("Created " + `${dir}${filename}/` + colors.blue.underline(`${filename}.${css}`));
     return true;
   });
 
-  filendir.writeFile(dir + filename + "/" + "package.json", templates.getJson(filename, true) , function(err) {
+  filendir.writeFile(dir + filename + "/" + "index.js", templates.getIndex(filename), function(err) {
     if (err) return console.log(err);
     
-    console.log("Created " + `${dir}${filename}/` + colors.magenta.underline("package.json"));
+    console.log("Created " + `${dir}${filename}/` + colors.magenta.underline("index.js"));
     return true;
   });
 };
