@@ -49,7 +49,7 @@ export default class Header extends Component {
 
 #### Header.scss
 ```sass
-.Header{
+.Header {
     /* Your stylesheet here */
 }
 ```
