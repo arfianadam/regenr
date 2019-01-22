@@ -1,23 +1,18 @@
-var template = (() => {
-  var options = {
+const template = (() => {
+  const options = {
     css: "scss",
     privateRep: true,
     cssModules: false
   };
 
-  var getJson = (componentName, privateRep) => {
-    privateRep = privateRep || options.privateRep;
-    return `{
+  const getJson = (componentName, privateRep = options.privateRep) => `{
   "name": "${componentName}",
   "version": "0.0.0",
   "private": ${privateRep},
   "main": "./${componentName}.js"
 }`;
-  };
 
-  var getReact = (componentName, style, cssModules) => {
-    cssModules = cssModules || options.cssModules;
-    return `import React, { Component } from 'react';
+  const getReact = (componentName, style, cssModules = options.cssModules) => `import React, { Component } from 'react';
 ${cssModules ? "import styles from './" + componentName + "." + style + "';" : ""}
 
 export default class ${componentName} extends Component {
@@ -35,25 +30,21 @@ export default class ${componentName} extends Component {
   }
 }
 `;
-  };
 
-  var getStyle = (componentName,style) => {
-    style = style || "scss";
-
+  const getStyle = (componentName, style = "scss") => {
     if (style === "sass") {
       return `.${componentName}
   /* Your stylesheet here */`;
-    } else {
-      return `.${componentName} {
+    }
+    return `.${componentName} {
   /* Your stylesheet here */
 }`;
-    }
   };
 
   return {
-    getStyle: getStyle,
-    getReact: getReact,
-    getJson: getJson
+    getStyle,
+    getReact,
+    getJson
   };
 })();
 
